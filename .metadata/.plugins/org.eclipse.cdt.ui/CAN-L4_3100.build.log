@@ -1,0 +1,10 @@
+22:17:17 **** Incremental Build of configuration Debug for project CAN-L4_3100 ****
+make -j8 all 
+arm-none-eabi-size  CAN-L4_3100.elf 
+   text	   data	    bss	    dec	    hex	filename
+  21516	     16	   8120	  29652	   73d4	CAN-L4_3100.elf
+Finished building: default.size.stdout
+ 
+
+22:17:17 Build Finished. 0 errors, 0 warnings. (took 165ms)
+

@@ -1,0 +1,604 @@
+!SESSION 2025-12-23 20:51:11.091 -----------------------------------------------
+eclipse.buildId=Version 1.19.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-12-23 20:51:52.975
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-12-23 20:51:52.976
+!MESSAGE Log4j2 initialized with config file /home/schaefer.open/Cube_IDE/CAN-L4-3100/.metadata/.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-12-23 20:51:56.192
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.percepio.tracealyzer.core 1 0 2025-12-23 20:52:03.710
+!MESSAGE Activator.start(): Called from com.percepio.tracealyzer.core, version: 1.1.4.v201906050834
+
+!ENTRY com.percepio.tracealyzer.core 2 0 2025-12-23 20:52:03.729
+!MESSAGE ContextManager.reportWarning(): No debug context found
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 20:52:03.735
+!MESSAGE Activator.start(): Called from com.percepio.tracealyzer.ui, version: 1.1.4.v201906050834
+
+!ENTRY org.eclipse.equinox.p2.updatesite 4 1002 2025-12-23 20:52:31.147
+!MESSAGE Error reading update site http://freescale.com/lgfiles/updates/Eclipse/KDS.
+!STACK 0
+org.xml.sax.SAXException: The XML stream is not a valid default "site.xml" file. The root tag is not site.
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.handleInitialState(DefaultSiteParser.java:530)
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.startElement(DefaultSiteParser.java:966)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:518)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.startElement(XMLDTDValidator.java:731)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:376)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:615)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3079)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:114)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.parse(DefaultSiteParser.java:615)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:157)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.initializeRepository(UpdateSiteMetadataRepositoryFactory.java:108)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.load(UpdateSiteMetadataRepositoryFactory.java:62)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:63)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:799)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:697)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:110)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:105)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:164)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:144)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:83)
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2025-12-23 20:57:20.355
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: Error reading update site http://freescale.com/lgfiles/updates/Eclipse/KDS.
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:165)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.initializeRepository(UpdateSiteMetadataRepositoryFactory.java:108)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.load(UpdateSiteMetadataRepositoryFactory.java:62)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:63)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:799)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:697)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:110)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:105)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:130)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:114)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$1.runModal(PreloadingRepositoryHandler.java:84)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:187)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.xml.sax.SAXException: The XML stream is not a valid default "site.xml" file. The root tag is not site.
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.handleInitialState(DefaultSiteParser.java:530)
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.startElement(DefaultSiteParser.java:966)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:518)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.startElement(XMLDTDValidator.java:731)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:376)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:615)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3079)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:114)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.parse(DefaultSiteParser.java:615)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:157)
+	... 12 more
+!SUBENTRY 1 org.eclipse.equinox.p2.updatesite 4 1002 2025-12-23 20:57:20.357
+!MESSAGE Error reading update site http://freescale.com/lgfiles/updates/Eclipse/KDS.
+!STACK 0
+org.xml.sax.SAXException: The XML stream is not a valid default "site.xml" file. The root tag is not site.
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.handleInitialState(DefaultSiteParser.java:530)
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.startElement(DefaultSiteParser.java:966)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.startElement(AbstractSAXParser.java:518)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.dtd.XMLDTDValidator.startElement(XMLDTDValidator.java:731)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.scanStartElement(XMLNSDocumentScannerImpl.java:376)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl$NSContentDriver.scanRootElementHook(XMLNSDocumentScannerImpl.java:615)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next(XMLDocumentFragmentScannerImpl.java:3079)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl$PrologDriver.next(XMLDocumentScannerImpl.java:836)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl.next(XMLDocumentScannerImpl.java:605)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLNSDocumentScannerImpl.next(XMLNSDocumentScannerImpl.java:114)
+	at java.xml/com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl.scanDocument(XMLDocumentFragmentScannerImpl.java:542)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:889)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XML11Configuration.parse(XML11Configuration.java:825)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.XMLParser.parse(XMLParser.java:141)
+	at java.xml/com.sun.org.apache.xerces.internal.parsers.AbstractSAXParser.parse(AbstractSAXParser.java:1224)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl$JAXPSAXParser.parse(SAXParserImpl.java:637)
+	at java.xml/com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl.parse(SAXParserImpl.java:326)
+	at org.eclipse.equinox.internal.p2.updatesite.DefaultSiteParser.parse(DefaultSiteParser.java:615)
+	at org.eclipse.equinox.internal.p2.updatesite.UpdateSite.load(UpdateSite.java:157)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.initializeRepository(UpdateSiteMetadataRepositoryFactory.java:108)
+	at org.eclipse.equinox.internal.p2.updatesite.metadata.UpdateSiteMetadataRepositoryFactory.load(UpdateSiteMetadataRepositoryFactory.java:62)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:63)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:799)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:697)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:110)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:105)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:130)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:114)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$1.runModal(PreloadingRepositoryHandler.java:84)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:187)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2025-12-23 21:06:52.553
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2025-12-23 21:06:52.553
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.553
+!MESSAGE Software being installed: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.553
+!MESSAGE Missing requirement: Git integration for Eclipse - Core 7.5.0.202512021534-r (org.eclipse.egit.core 7.5.0.202512021534-r) requires 'osgi.bundle; org.eclipse.core.runtime [3.33.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2025-12-23 21:06:52.553
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.553
+!MESSAGE From: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.553
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.egit.core [7.5.0.202512021534-r,7.5.0.202512021534-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2025-12-23 21:06:52.696
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2025-12-23 21:06:52.696
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.696
+!MESSAGE Software being installed: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.696
+!MESSAGE Missing requirement: Git integration for Eclipse - Core 7.5.0.202512021534-r (org.eclipse.egit.core 7.5.0.202512021534-r) requires 'osgi.bundle; org.eclipse.core.runtime [3.33.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2025-12-23 21:06:52.696
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.696
+!MESSAGE From: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:06:52.696
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.egit.core [7.5.0.202512021534-r,7.5.0.202512021534-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2025-12-23 21:11:13.493
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2025-12-23 21:11:13.493
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.493
+!MESSAGE Software being installed: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.493
+!MESSAGE Missing requirement: Git integration for Eclipse - Core 7.5.0.202512021534-r (org.eclipse.egit.core 7.5.0.202512021534-r) requires 'osgi.bundle; org.eclipse.core.runtime [3.33.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2025-12-23 21:11:13.493
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.493
+!MESSAGE From: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.493
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.egit.core [7.5.0.202512021534-r,7.5.0.202512021534-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2025-12-23 21:11:13.495
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2025-12-23 21:11:13.495
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.495
+!MESSAGE Software being installed: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.495
+!MESSAGE Missing requirement: Git integration for Eclipse - Core 7.5.0.202512021534-r (org.eclipse.egit.core 7.5.0.202512021534-r) requires 'osgi.bundle; org.eclipse.core.runtime [3.33.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2025-12-23 21:11:13.495
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.495
+!MESSAGE From: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.495
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.egit.core [7.5.0.202512021534-r,7.5.0.202512021534-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2025-12-23 21:11:13.503
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2025-12-23 21:11:13.503
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE Software being installed: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE Missing requirement: Git integration for Eclipse - Core 7.5.0.202512021534-r (org.eclipse.egit.core 7.5.0.202512021534-r) requires 'osgi.bundle; org.eclipse.core.runtime [3.33.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2025-12-23 21:11:13.503
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE From: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.egit.core [7.5.0.202512021534-r,7.5.0.202512021534-r]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2025-12-23 21:11:13.503
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2025-12-23 21:11:13.503
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE Software being installed: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE Missing requirement: Git integration for Eclipse - Core 7.5.0.202512021534-r (org.eclipse.egit.core 7.5.0.202512021534-r) requires 'osgi.bundle; org.eclipse.core.runtime [3.33.100,4.0.0)' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2025-12-23 21:11:13.503
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE From: Git integration for Eclipse 7.5.0.202512021534-r (org.eclipse.egit.feature.group 7.5.0.202512021534-r)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2025-12-23 21:11:13.503
+!MESSAGE To: org.eclipse.equinox.p2.iu; org.eclipse.egit.core [7.5.0.202512021534-r,7.5.0.202512021534-r]
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2025-12-23 21:12:22.267
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,org.slf4j.impl.log4j12,1.7.2.v20131105-2200 have severely compromised security. Please report this concern to the artifact provider.
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-12-23 21:43:53.425
+!MESSAGE Indexed 'CAN-L4_3100' (24 sources, 84 headers) in 9.32 sec: 5,667 declarations; 30,286 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.0056%)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:38.108
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:38.963
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:39.001
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:48.609
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:48.700
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:49.721
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:49.798
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:51.167
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:51.231
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:51.934
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:51.998
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:52.668
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:44:52.730
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:45:05.338
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:45:27.844
+!MESSAGE ContextManager.reportStatus(): Context for Session 0 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 2 0 2025-12-23 21:45:28.378
+!MESSAGE ContextManager.reportWarning(): Session for current Context ended
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:56:24.494
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:56:25.813
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:56:25.844
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:56:29.055
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:56:29.091
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:16.981
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:17.037
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:20.624
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:20.681
+!MESSAGE ContextManager.reportStatus(): Context for Session 1 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 2 0 2025-12-23 21:57:23.109
+!MESSAGE ContextManager.reportWarning(): Session for current Context ended
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:31.858
+!MESSAGE ContextManager.reportStatus(): Context for Session 2 (org.eclipse.cdt.dsf.gdb)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:33.159
+!MESSAGE ContextManager.reportStatus(): Context for Session 2 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:33.198
+!MESSAGE ContextManager.reportStatus(): Context for Session 2 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:36.307
+!MESSAGE ContextManager.reportStatus(): Context for Session 2 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:57:54.073
+!MESSAGE ContextManager.reportStatus(): Context for Session 2 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 2 0 2025-12-23 21:58:00.542
+!MESSAGE ContextManager.reportWarning(): Session for current Context ended
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:58:05.825
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:58:07.109
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:58:07.149
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:58:09.911
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:58:09.955
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 21:58:15.020
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:05:16.956
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:06:33.128
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:01.186
+!MESSAGE ContextManager.reportStatus(): Context for Session 3 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 2 0 2025-12-23 22:16:01.721
+!MESSAGE ContextManager.reportWarning(): Session for current Context ended
+
+!ENTRY org.eclipse.ui 4 4 2025-12-23 22:16:04.815
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: org.eclipse.debug.internal.ui.sourcelookup.Prompter$$Lambda/0x0000000101ac8918@1149659f, thread Worker-26: Launching New_configuration will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2025-12-23 22:16:04.815
+!MESSAGE Worker-26: Launching New_configuration thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-26: Launching New_configuration
+	at java.management@21.0.3/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@21.0.3/sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:482)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:208)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:174)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:92)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:142)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:5960)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.handleStatus(Prompter.java:81)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.saveBeforeLaunch(LaunchConfigurationDelegate.java:245)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.preLaunchCheck(LaunchConfigurationDelegate.java:197)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.preLaunchCheck(GdbLaunchDelegate.java:371)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.preLaunchCheck(DSFDelegate.java:211)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:769)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1054)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1257)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2025-12-23 22:16:04.816
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at org.eclipse.swt.internal.gtk.OS.Call(Native Method)
+	at org.eclipse.swt.widgets.Display.sleep(Display.java:5641)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:824)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.showSaveDialog(SaveScopeResourcesHandler.java:250)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:180)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter$$Lambda/0x0000000101ac8918.run(Unknown Source)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:166)
+	at org.eclipse.ui.internal.UILockListener.aboutToWait(UILockListener.java:134)
+	at org.eclipse.core.internal.jobs.LockManager.aboutToWait(LockManager.java:105)
+	at org.eclipse.core.internal.jobs.JobManager.join(JobManager.java:994)
+	at org.eclipse.core.internal.jobs.InternalJob.join(InternalJob.java:355)
+	at org.eclipse.core.runtime.jobs.Job.join(Job.java:531)
+	at org.eclipse.tm.internal.terminal.emulator.VT100TerminalControl.disconnectTerminal(VT100TerminalControl.java:469)
+	at org.eclipse.tm.internal.terminal.emulator.VT100TerminalControl.disposeTerminal(VT100TerminalControl.java:415)
+	at org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbFullCliConsolePage.dispose(GdbFullCliConsolePage.java:125)
+	at org.eclipse.cdt.debug.internal.ui.views.debuggerconsole.DebuggerConsoleView.doDestroyPage(DebuggerConsoleView.java:304)
+	at org.eclipse.ui.part.PageBookView.removePage(PageBookView.java:806)
+	at org.eclipse.ui.part.PageBookView.partClosed(PageBookView.java:740)
+	at org.eclipse.cdt.debug.internal.ui.views.debuggerconsole.DebuggerConsoleView.lambda$1(DebuggerConsoleView.java:375)
+	at org.eclipse.cdt.debug.internal.ui.views.debuggerconsole.DebuggerConsoleView$$Lambda/0x0000000101cee6d8.run(Unknown Source)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5040)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4520)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.ui.internal.Workbench$$Lambda/0x00000001002b1c50.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base@21.0.3/java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(DirectMethodHandle$Holder)
+	at java.base@21.0.3/java.lang.invoke.LambdaForm$MH/0x00000001000c6800.invoke(LambdaForm$MH)
+	at java.base@21.0.3/java.lang.invoke.LambdaForm$MH/0x00000001000c6c00.invokeExact_MT(LambdaForm$MH)
+	at java.base@21.0.3/jdk.internal.reflect.DirectMethodHandleAccessor.invokeImpl(DirectMethodHandleAccessor.java:155)
+	at java.base@21.0.3/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base@21.0.3/java.lang.reflect.Method.invoke(Method.java:580)
+	at app//org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at app//org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at app//org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at app//org.eclipse.equinox.launcher.Main.main(Main.java:1454)
+
+!ENTRY org.eclipse.ui 4 4 2025-12-23 22:16:06.016
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: org.eclipse.debug.internal.ui.sourcelookup.Prompter$$Lambda/0x0000000101ac8918@1149659f, thread Worker-26: Launching New_configuration will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2025-12-23 22:16:06.016
+!MESSAGE Worker-26: Launching New_configuration thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-26: Launching New_configuration
+	at java.management@21.0.3/sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at java.management@21.0.3/sun.management.ThreadImpl.getThreadInfo(ThreadImpl.java:482)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:208)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:174)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:92)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:142)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:5960)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.handleStatus(Prompter.java:81)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.saveBeforeLaunch(LaunchConfigurationDelegate.java:245)
+	at org.eclipse.debug.core.model.LaunchConfigurationDelegate.preLaunchCheck(LaunchConfigurationDelegate.java:197)
+	at org.eclipse.cdt.dsf.gdb.launching.GdbLaunchDelegate.preLaunchCheck(GdbLaunchDelegate.java:371)
+	at com.st.stm32cube.ide.mcu.debug.launch.DSFDelegate.preLaunchCheck(DSFDelegate.java:211)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:769)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:716)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1054)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$1.run(DebugUIPlugin.java:1257)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2025-12-23 22:16:06.016
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at org.eclipse.swt.internal.gtk.OS.Call(Native Method)
+	at org.eclipse.swt.widgets.Display.sleep(Display.java:5641)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:824)
+	at org.eclipse.jface.window.Window.open(Window.java:799)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.showSaveDialog(SaveScopeResourcesHandler.java:250)
+	at org.eclipse.debug.internal.ui.launchConfigurations.SaveScopeResourcesHandler.handleStatus(SaveScopeResourcesHandler.java:180)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter.lambda$0(Prompter.java:73)
+	at org.eclipse.debug.internal.ui.sourcelookup.Prompter$$Lambda/0x0000000101ac8918.run(Unknown Source)
+	at org.eclipse.ui.internal.PendingSyncExec.run(PendingSyncExec.java:68)
+	at org.eclipse.ui.internal.UILockListener.doPendingWork(UILockListener.java:166)
+	at org.eclipse.ui.internal.UILockListener.aboutToWait(UILockListener.java:134)
+	at org.eclipse.core.internal.jobs.LockManager.aboutToWait(LockManager.java:105)
+	at org.eclipse.core.internal.jobs.JobManager.join(JobManager.java:994)
+	at org.eclipse.core.internal.jobs.InternalJob.join(InternalJob.java:355)
+	at org.eclipse.core.runtime.jobs.Job.join(Job.java:531)
+	at org.eclipse.tm.internal.terminal.emulator.VT100TerminalControl.disconnectTerminal(VT100TerminalControl.java:469)
+	at org.eclipse.tm.internal.terminal.emulator.VT100TerminalControl.disposeTerminal(VT100TerminalControl.java:415)
+	at org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbFullCliConsolePage.dispose(GdbFullCliConsolePage.java:125)
+	at org.eclipse.cdt.debug.internal.ui.views.debuggerconsole.DebuggerConsoleView.doDestroyPage(DebuggerConsoleView.java:304)
+	at org.eclipse.ui.part.PageBookView.removePage(PageBookView.java:806)
+	at org.eclipse.ui.part.PageBookView.partClosed(PageBookView.java:740)
+	at org.eclipse.cdt.debug.internal.ui.views.debuggerconsole.DebuggerConsoleView.lambda$1(DebuggerConsoleView.java:375)
+	at org.eclipse.cdt.debug.internal.ui.views.debuggerconsole.DebuggerConsoleView$$Lambda/0x0000000101cee6d8.run(Unknown Source)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:132)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:5040)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:4520)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1042)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:639)
+	at org.eclipse.ui.internal.Workbench$$Lambda/0x00000001002b1c50.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:546)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:208)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:143)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:109)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:439)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:271)
+	at java.base@21.0.3/java.lang.invoke.DirectMethodHandle$Holder.invokeStatic(DirectMethodHandle$Holder)
+	at java.base@21.0.3/java.lang.invoke.LambdaForm$MH/0x00000001000c6800.invoke(LambdaForm$MH)
+	at java.base@21.0.3/java.lang.invoke.LambdaForm$MH/0x00000001000c6c00.invokeExact_MT(LambdaForm$MH)
+	at java.base@21.0.3/jdk.internal.reflect.DirectMethodHandleAccessor.invokeImpl(DirectMethodHandleAccessor.java:155)
+	at java.base@21.0.3/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base@21.0.3/java.lang.reflect.Method.invoke(Method.java:580)
+	at app//org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:668)
+	at app//org.eclipse.equinox.launcher.Main.basicRun(Main.java:605)
+	at app//org.eclipse.equinox.launcher.Main.run(Main.java:1481)
+	at app//org.eclipse.equinox.launcher.Main.main(Main.java:1454)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:33.633
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:35.025
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:35.053
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:38.101
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:49.325
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:16:49.400
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:12.495
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:12.564
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:14.408
+!MESSAGE ContextManager.reportStatus(): Context for Session 5 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 2 0 2025-12-23 22:17:14.947
+!MESSAGE ContextManager.reportWarning(): Session for current Context ended
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:20.206
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:21.560
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:21.599
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:24.497
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:24.540
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:28.730
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:28.938
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:39.027
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:40.063
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:40.833
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:41.005
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:41.837
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:42.424
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:44.265
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:44.410
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:46.040
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:46.296
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:17:57.911
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 1 0 2025-12-23 22:31:51.742
+!MESSAGE ContextManager.reportStatus(): Context for Session 6 (org.eclipse.cdt.dsf.gdb) (repeated)
+
+!ENTRY com.percepio.tracealyzer.ui 2 0 2025-12-23 22:31:52.278
+!MESSAGE ContextManager.reportWarning(): Session for current Context ended
