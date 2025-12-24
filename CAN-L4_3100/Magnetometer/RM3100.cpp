@@ -62,13 +62,14 @@ void SPI1_select( bool enable)
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, enable ? GPIO_PIN_RESET : GPIO_PIN_SET);
 }
 
-bool read_register_set( uint8_t _register, unsigned count, int8_t * target)
+bool read_register_set( uint8_t _register, unsigned count, uint8_t * target)
 {
 	uint8_t TX_data[count];
-	TX_data[0] = 0x80 || _register;
+	TX_data[0] = 0x80 | _register;
 	HAL_StatusTypeDef result;
 	SPI1_select( true);
-	result = HAL_SPI_TransmitReceive_IT( &hspi1, (const uint8_t *)TX_data, (uint8_t *)target, count);
+	result = HAL_SPI_TransmitReceive( &hspi1, (const uint8_t *)TX_data, target, count, 1000);
+//	result = HAL_SPI_TransmitReceive_IT( &hspi1, (const uint8_t *)TX_data, (uint8_t *)target, count);
 	SPI1_select( false);
 	return result == HAL_OK;
 }
@@ -80,17 +81,19 @@ bool write_register_set( uint8_t register, unsigned count, const int8_t * target
 
 bool configure_RM3100(void)
 {
-	int8_t regbuf[6] = {0x55};
-	bool ok = read_register_set( RM3100_CCX1_REG, 6, regbuf);
+	uint8_t regbuf[10];
+	memset( regbuf, 0x55, 10);
+	bool ok = read_register_set( RM3100_CCX1_REG, 7, regbuf);
 	if( not ok)
 		return false;
-	if(
-		regbuf[0] != CCP1_DEFAULT || regbuf[1] != CCP0_DEFAULT ||
-		regbuf[2] != CCP1_DEFAULT || regbuf[3] != CCP0_DEFAULT ||
-		regbuf[4] != CCP1_DEFAULT || regbuf[5] != CCP0_DEFAULT
+	if( not
+		(
+		(regbuf[1] == CCP1_DEFAULT) && (regbuf[2] == CCP0_DEFAULT) &&
+		(regbuf[3] == CCP1_DEFAULT) && (regbuf[4] == CCP0_DEFAULT) &&
+		(regbuf[5] == CCP1_DEFAULT) && (regbuf[6] == CCP0_DEFAULT)
 		)
+		  )
 		return false;
-
 	return true;
 }
 
@@ -99,9 +102,11 @@ bool read_RM3100( mag_data & target)
 
 }
 
+volatile bool result;
+
 extern "C" void RM3100_runnable( void *)
 {
-	bool result = configure_RM3100();
+	result = configure_RM3100();
 
 	while( true)
 	{
