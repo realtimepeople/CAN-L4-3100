@@ -98,9 +98,10 @@ LoopFillZerobss:
 /* Call static constructors */
     bl __libc_init_array
 /* Call the application's entry point.*/
-	bl	main
+	b	main
 
 LoopForever:
+	bkpt 0
     b LoopForever
     
 .size	Reset_Handler, .-Reset_Handler
@@ -116,6 +117,7 @@ LoopForever:
     .section	.text.Default_Handler,"ax",%progbits
 Default_Handler:
 Infinite_Loop:
+	bkpt 0
 	b	Infinite_Loop
 	.size	Default_Handler, .-Default_Handler
 /******************************************************************************

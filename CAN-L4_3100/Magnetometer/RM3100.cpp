@@ -1,10 +1,7 @@
-#if 0
-extern "C" {
-#include <main.h>
-#include "FreeRTOS.h"
-}
-
+#include "FreeRTOS_wrapper.h"
 #include "RM3100.hpp"
+#include "stm32l4xx_hal.h"
+
 #define RM3100_POLL_REG        0x00
 
 #define RM3100_CMM_REG         0x01
@@ -95,12 +92,11 @@ bool read_RM3100( mag_data & target)
 
 }
 
-void RM3100_runnable( void *)
+extern "C" void RM3100_runnable( void *)
 {
-	bool result = configure_RM3100();
+//	bool result = configure_RM3100(); todo patch
 	while( true)
 	{
 		vTaskDelay( 1000);
 	}
 }
-#endif
