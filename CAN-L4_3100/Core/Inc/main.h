@@ -47,6 +47,8 @@ extern "C" {
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 
+#define USE_FULL_ASSERT 1
+
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
