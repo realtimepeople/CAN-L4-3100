@@ -27,7 +27,7 @@
 
 #define RM3100_BIST_REG       0x33
 #define RM3100_STATUS_REG     0x34
-#define RM3100_HSHAKE_REG     0x34
+#define RM3100_HSHAKE_REG     0x35
 #define RM3100_REVID_REG      0x36
 
 #define CCP0    0xC8      // Cycle Count values
@@ -39,9 +39,10 @@
 #define GAIN_CC200 75.0f
 
 #define TMRC    0x94    // Update rate 150Hz
-#define CMM     0x71    // read 3 axes and set data ready if 3 axes are ready
+#define CMM     0x79    // read 3 axes and set data ready if 3 axes are ready
 
 extern SPI_HandleTypeDef hspi1;
+extern CAN_HandleTypeDef hcan1;
 
 class hw_data
 {
@@ -117,14 +118,20 @@ bool read_RM3100( hw_data * target)
     return read_register_set( RM3100_MX2_REG, sizeof(hw_data) + 1, (uint8_t *)target);
 }
 
+uint8_t handshake[2];
 mag_data measurement_result;
 unsigned fail_count;
 hw_data target;
-int64_t packed_result;
+uint64_t packed_result;
 
 extern "C" void RM3100_runnable( void *)
 {
 	bool result;
+	uint64_t packed_result;
+
+	volatile HAL_StatusTypeDef stat = HAL_CAN_Start(&hcan1);
+	CAN_TxHeaderTypeDef Header = { 0x123, 0, 0, 0, 8, DISABLE};
+	uint32_t mbx;
 
 	while( true)
 	{
@@ -139,18 +146,31 @@ extern "C" void RM3100_runnable( void *)
 	for( synchronous_timer t( 10); true; t.sync())
 	{
 		uint8_t status_register[2];
-	    result = read_register_set( RM3100_STATUS_REG, 1, status_register);
+
+		result = read_register_set( RM3100_STATUS_REG, 2, status_register);
 	    if( not  result)
 	    	continue;
+
 	    if( (status_register[1] & 0x80) == 0)
 	    {
 	    	++fail_count;
 	    	continue;
 	    }
-		result = read_RM3100( &target);
-		measurement_result.magx = (target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8);
-		measurement_result.magy = (target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8);
-		measurement_result.magz = (target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8);
+
+	    result = read_register_set( RM3100_HSHAKE_REG, 2, handshake);
+	    if( not  result)
+	       	continue;
+
+	    result = read_RM3100( &target);
+	    if( not  result)
+	    	continue;
+
+	    measurement_result.magx = ((target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8)) & 0x1fffff00;
+		measurement_result.magy = ((target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8)) & 0x1fffff00;
+		measurement_result.magz = ((target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8)) & 0x1fffff00;
+		packed_result = (measurement_result.magx >> 8) | ((uint64_t)(measurement_result.magy) << (21-8)) | ((uint64_t)(measurement_result.magz) << (2*21-8));
+	    result = HAL_CAN_AddTxMessage( &hcan1, &Header, (uint8_t *)&packed_result, &mbx);
 	}
 }
 
+Task RM3100( RM3100_runnable, "MAG", 256);

@@ -135,7 +135,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  RM3100_TaskHandle = osThreadNew( RM3100_runnable, NULL, &defaultTask_attributes);
+//  RM3100_TaskHandle = osThreadNew( RM3100_runnable, NULL, &defaultTask_attributes);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -345,21 +345,16 @@ static void MX_GPIO_Init(void)
   * @retval None
   */
 /* USER CODE END Header_StartDefaultTask */
+
 void StartDefaultTask(void *argument)
 {
   /* USER CODE BEGIN 5 */
-
-	HAL_StatusTypeDef stat = HAL_CAN_Start(&hcan1);
-
-	CAN_TxHeaderTypeDef Header = { 0x123, 0, 0, 0, 4, 0};
-	uint32_t mbx;
   for(;;)
   {
     osDelay(500);
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_RESET);
     osDelay(500);
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_3, GPIO_PIN_SET);
-    stat = HAL_CAN_AddTxMessage( &hcan1, &Header, "123", &mbx);
   }
   /* USER CODE END 5 */
 }
