@@ -46,6 +46,7 @@ extern SPI_HandleTypeDef hspi1;
 class hw_data
 {
 public:
+	uint8_t dummy; // 0th byte invalid
 	uint8_t magx_2;
 	uint8_t magx_1;
 	uint8_t magx_0;
@@ -74,18 +75,16 @@ bool read_register_set( uint8_t _register, unsigned count, uint8_t * target)
 	return result == HAL_OK;
 }
 
-bool write_register_set( uint8_t register, unsigned count, const int8_t * target)
-{
-
-}
+ROM uint8_t INIT_DATA[] = { RM3100_CMM_REG, CMM, RM3100_MX2_REG, CCP1, CCP0, CCP1, CCP0, CCP1, CCP0, RM3100_TMRC_REG, TMRC};
 
 bool configure_RM3100(void)
 {
-	uint8_t regbuf[10];
-	memset( regbuf, 0x55, 10);
+	uint8_t regbuf[20];
+	memset( regbuf, 0x55, 20);
 	bool ok = read_register_set( RM3100_CCX1_REG, 7, regbuf);
 	if( not ok)
 		return false;
+#if 1 // do the test
 	if( not
 		(
 		(regbuf[1] == CCP1_DEFAULT) && (regbuf[2] == CCP0_DEFAULT) &&
@@ -94,22 +93,55 @@ bool configure_RM3100(void)
 		)
 		  )
 		return false;
-	return true;
+#endif
+
+	HAL_StatusTypeDef result;
+	SPI1_select( true);
+	result = HAL_SPI_Transmit( &hspi1, INIT_DATA+9, 2, 1000);
+	SPI1_select( false);
+	delay(1);
+	SPI1_select( true);
+	result = HAL_SPI_Transmit( &hspi1, INIT_DATA, 2, 1000);
+	SPI1_select( false);
+	delay(1);
+	SPI1_select( true);
+	result = HAL_SPI_Transmit( &hspi1, INIT_DATA+2, 7, 1000);
+	SPI1_select( false);
+	delay(1);
+
+	return result == HAL_OK;
 }
 
-bool read_RM3100( mag_data & target)
+bool read_RM3100( hw_data * target)
 {
-
+    return read_register_set( RM3100_MX2_REG, sizeof(hw_data) + 1, (uint8_t *)target);
 }
 
-volatile bool result;
+hw_data target;
 
 extern "C" void RM3100_runnable( void *)
 {
-	result = configure_RM3100();
+	bool result;
 
 	while( true)
 	{
-		delay( 1000);
+		result = configure_RM3100();
+		if( result)
+			break;
+		delay(100);
+	}
+
+	delay( 13);
+
+	for( synchronous_timer t( 13); true; t.sync())
+	{
+		uint8_t status_register[2];
+	    result = read_register_set( RM3100_STATUS_REG, 1, status_register);
+	    if( not  result)
+	    	continue;
+	    if( (status_register[1] & 0x80) == 0)
+	    	continue;
+		result = read_RM3100( &target);
 	}
 }
+
