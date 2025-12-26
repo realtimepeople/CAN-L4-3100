@@ -130,7 +130,7 @@ extern "C" void RM3100_runnable( void *)
 	uint64_t packed_result;
 
 	volatile HAL_StatusTypeDef stat = HAL_CAN_Start(&hcan1);
-	CAN_TxHeaderTypeDef Header = { 0x123, 0, 0, 0, 8, DISABLE};
+	CAN_TxHeaderTypeDef Header = { 0x160, 0, 0, 0, 8, DISABLE};
 	uint32_t mbx;
 
 	while( true)
