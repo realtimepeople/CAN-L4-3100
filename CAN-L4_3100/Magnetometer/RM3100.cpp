@@ -117,7 +117,10 @@ bool read_RM3100( hw_data * target)
     return read_register_set( RM3100_MX2_REG, sizeof(hw_data) + 1, (uint8_t *)target);
 }
 
+mag_data measurement_result;
+unsigned fail_count;
 hw_data target;
+int64_t packed_result;
 
 extern "C" void RM3100_runnable( void *)
 {
@@ -133,15 +136,21 @@ extern "C" void RM3100_runnable( void *)
 
 	delay( 13);
 
-	for( synchronous_timer t( 13); true; t.sync())
+	for( synchronous_timer t( 10); true; t.sync())
 	{
 		uint8_t status_register[2];
 	    result = read_register_set( RM3100_STATUS_REG, 1, status_register);
 	    if( not  result)
 	    	continue;
 	    if( (status_register[1] & 0x80) == 0)
+	    {
+	    	++fail_count;
 	    	continue;
+	    }
 		result = read_RM3100( &target);
+		measurement_result.magx = (target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8);
+		measurement_result.magy = (target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8);
+		measurement_result.magz = (target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8);
 	}
 }
 
