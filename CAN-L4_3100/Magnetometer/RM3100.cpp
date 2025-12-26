@@ -168,6 +168,8 @@ extern "C" void RM3100_runnable( void *)
 	    measurement_result.magx = ((target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8)) & 0x1fffff00;
 		measurement_result.magy = ((target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8)) & 0x1fffff00;
 		measurement_result.magz = ((target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8)) & 0x1fffff00;
+
+		// pack result into single 64 bit datum: 21 + 21 + 21 bits
 		packed_result = (measurement_result.magx >> 8) | ((uint64_t)(measurement_result.magy) << (21-8)) | ((uint64_t)(measurement_result.magz) << (2*21-8));
 	    result = HAL_CAN_AddTxMessage( &hcan1, &Header, (uint8_t *)&packed_result, &mbx);
 	}
