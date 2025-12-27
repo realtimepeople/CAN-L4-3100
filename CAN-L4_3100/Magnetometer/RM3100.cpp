@@ -127,6 +127,8 @@ uint64_t time_consumed;
 
 extern "C" void RM3100_runnable( void *)
 {
+restart:
+
 	bool result;
 	uint64_t packed_result;
 	uint64_t start_time;
@@ -143,7 +145,7 @@ extern "C" void RM3100_runnable( void *)
 		delay(100);
 	}
 
-	delay( 13);
+	delay( 10);
 
 	for( synchronous_timer t( 10); true; t.sync())
 	{
@@ -155,25 +157,28 @@ extern "C" void RM3100_runnable( void *)
 	    if( not  result)
 	    {
 	    	++fail_count;
-	    	continue;
+	    	goto restart;
 	    }
 
 	    if( (status_register[1] & 0x80) == 0)
 	    {
 	    	++fail_count;
-	    	continue;
+	    	goto restart;
 	    }
 
 	    result = read_register_set( RM3100_HSHAKE_REG, 2, handshake);
 	    if( not  result)
 	    {
 	    	++fail_count;
-	    	continue;
+	    	goto restart;
 	    }
 
 	    result = read_RM3100( &target);
 	    if( not  result)
-	    	continue;
+	    {
+	    	++fail_count;
+	    	goto restart;
+	    }
 
 	    measurement_result.magx = ((target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8)) & 0x3fff00;
 		measurement_result.magy = ((target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8)) & 0x3fff00;
