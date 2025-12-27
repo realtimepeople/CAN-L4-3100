@@ -47,7 +47,7 @@ extern CAN_HandleTypeDef hcan1;
 class hw_data
 {
 public:
-	uint8_t dummy; // 0th byte invalid
+	uint8_t dummy; // first byte invalid
 	uint8_t magx_2;
 	uint8_t magx_1;
 	uint8_t magx_0;
@@ -71,7 +71,7 @@ bool read_register_set( uint8_t _register, unsigned count, uint8_t * target)
 	HAL_StatusTypeDef result;
 	SPI1_select( true);
 	result = HAL_SPI_TransmitReceive( &hspi1, (const uint8_t *)TX_data, target, count, 1000);
-//	result = HAL_SPI_TransmitReceive_IT( &hspi1, (const uint8_t *)TX_data, (uint8_t *)target, count);
+//	result = HAL_SPI_TransmitReceive_IT( &hspi1, (const uint8_t *)TX_data, target, count);
 	SPI1_select( false);
 	return result == HAL_OK;
 }
@@ -123,11 +123,13 @@ mag_data measurement_result;
 unsigned fail_count;
 hw_data target;
 uint64_t packed_result;
+uint64_t time_consumed;
 
 extern "C" void RM3100_runnable( void *)
 {
 	bool result;
 	uint64_t packed_result;
+	uint64_t start_time;
 
 	volatile HAL_StatusTypeDef stat = HAL_CAN_Start(&hcan1);
 	CAN_TxHeaderTypeDef Header = { 0x160, 0, 0, 0, 6, DISABLE};
@@ -147,9 +149,14 @@ extern "C" void RM3100_runnable( void *)
 	{
 		uint8_t status_register[2];
 
+		start_time = getTime_usec_privileged();
+
 		result = read_register_set( RM3100_STATUS_REG, 2, status_register);
 	    if( not  result)
+	    {
+	    	++fail_count;
 	    	continue;
+	    }
 
 	    if( (status_register[1] & 0x80) == 0)
 	    {
@@ -159,7 +166,10 @@ extern "C" void RM3100_runnable( void *)
 
 	    result = read_register_set( RM3100_HSHAKE_REG, 2, handshake);
 	    if( not  result)
-	       	continue;
+	    {
+	    	++fail_count;
+	    	continue;
+	    }
 
 	    result = read_RM3100( &target);
 	    if( not  result)
@@ -172,6 +182,7 @@ extern "C" void RM3100_runnable( void *)
 		// pack result into single 64 bit datum: 21 + 21 + 21 bits
 		packed_result = (measurement_result.magx >> 8) | ((uint64_t)(measurement_result.magy) << (14-8)) | ((uint64_t)(measurement_result.magz) << (2*14-8));
 	    result = HAL_CAN_AddTxMessage( &hcan1, &Header, (uint8_t *)&packed_result, &mbx);
+	    time_consumed = getTime_usec_privileged() - start_time;
 	}
 }
 
