@@ -180,12 +180,12 @@ restart:
 	    	goto restart;
 	    }
 
-	    measurement_result.magx = ((target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8)) & 0x3fff00;
-		measurement_result.magy = ((target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8)) & 0x3fff00;
-		measurement_result.magz = ((target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8)) & 0x3fff00;
+	    measurement_result.magx = ((target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8)) & 0xffff00;
+		measurement_result.magy = ((target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8)) & 0xffff00;
+		measurement_result.magz = ((target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8)) & 0xffff00;
 
-		// pack result into single 64 bit datum: 21 + 21 + 21 bits
-		packed_result = (measurement_result.magx >> 8) | ((uint64_t)(measurement_result.magy) << (14-8)) | ((uint64_t)(measurement_result.magz) << (2*14-8));
+		// pack result into single 64 bit datum: 16 + 16 + 16 bits -> 6 bytes telegram length
+		packed_result = (measurement_result.magx >> 8) | ((uint64_t)(measurement_result.magy) << (16-8)) | ((uint64_t)(measurement_result.magz) << (2*16-8));
 	    result = HAL_CAN_AddTxMessage( &hcan1, &Header, (uint8_t *)&packed_result, &mbx);
 	    time_consumed = getTime_usec_privileged() - start_time;
 	}
