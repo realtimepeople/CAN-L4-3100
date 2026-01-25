@@ -198,7 +198,8 @@ restart:
 
 	delay( 10);
 
-	for( synchronous_timer t( 10); true; t.sync())
+	unsigned n = 0;
+	for( synchronous_timer t( 4); true; t.sync())
 	{
 #if MEASURE_DAQ_TIME
 		start_time = getTime_usec_privileged();
@@ -206,57 +207,57 @@ restart:
 
 		uint8_t status_register[2];
 
-		for( unsigned sample = 0; sample < 3; ++sample)
+		SPI1_select( true);
+		result = HAL_SPI_Transmit( &hspi1, TRIGGER_SINGLE_Z_MEASUREMENT, 2, 10);
+		SPI1_select( false);
+
+		if( result != HAL_OK)
 		{
-			SPI1_select( true);
-			result = HAL_SPI_Transmit( &hspi1, TRIGGER_SINGLE_Z_MEASUREMENT, 2, 10);
-			SPI1_select( false);
+			++fail_count;
+			goto restart;
+		}
 
-			if( result != HAL_OK)
-			{
-				++fail_count;
-				goto restart;
-			}
-
-			delay(3); // measurement takes 3ms
-
-			while( true)
-			{
-				result = read_register_set( RM3100_STATUS_REG, 2, status_register);
-				if( not  result)
-				{
-					++fail_count;
-					goto restart;
-				}
-				if( (status_register[1] & 0x80) != 0)
-					break;
-				delay(1); // wait one more tick and try again
-			}
-
-			result = read_RM3100_single( &(data_read[ sample][0]));
+		while( true)
+		{
+			result = read_register_set( RM3100_STATUS_REG, 2, status_register);
 			if( not  result)
 			{
 				++fail_count;
 				goto restart;
 			}
+			if( (status_register[1] & 0x80) != 0)
+				break;
+			delay(1); // wait one more tick and try again
 		}
 
-	    measurement_result.magx = (( data_read[0][1] << 24) | ( data_read[0][2] << 16) | ( data_read[0][3] << 8)) >> 8;
-	    measurement_result.magy = (( data_read[1][1] << 24) | ( data_read[1][2] << 16) | ( data_read[1][3] << 8)) >> 8;
-	    measurement_result.magz = (( data_read[2][1] << 24) | ( data_read[2][2] << 16) | ( data_read[2][3] << 8)) >> 8;
+		result = read_RM3100_single( &(data_read[ n][0]));
+		if( not  result)
+		{
+			++fail_count;
+			goto restart;
+		}
 
-		// pack result into single 64 bit datum: 16 + 16 + 16 bits -> 6 bytes telegram length
-		packed_result =
-				(((uint64_t)(measurement_result.magx) & 0xffff) |
-				(((uint64_t)(measurement_result.magy) & 0xffff) << 16) |
-				(((uint64_t)(measurement_result.magz) & 0xffff) << 32) );
+		if( ++n == 3)
+		{
+			n=0;
 
-		result = HAL_CAN_AddTxMessage( &hcan1, &Header, (uint8_t *)&packed_result, &mbx);
-	    if( result != HAL_OK)
-	    {
-	    	++fail_count;
-	    	goto restart;
-	    }
+			measurement_result.magx = (( data_read[0][1] << 24) | ( data_read[0][2] << 16) | ( data_read[0][3] << 8)) >> 8;
+			measurement_result.magy = (( data_read[1][1] << 24) | ( data_read[1][2] << 16) | ( data_read[1][3] << 8)) >> 8;
+			measurement_result.magz = (( data_read[2][1] << 24) | ( data_read[2][2] << 16) | ( data_read[2][3] << 8)) >> 8;
+
+			// pack result into single 64 bit datum: 16 + 16 + 16 bits -> 6 bytes telegram length
+			packed_result =
+					(((uint64_t)(measurement_result.magx) & 0xffff) |
+					(((uint64_t)(measurement_result.magy) & 0xffff) << 16) |
+					(((uint64_t)(measurement_result.magz) & 0xffff) << 32) );
+
+			result = HAL_CAN_AddTxMessage( &hcan1, &Header, (uint8_t *)&packed_result, &mbx);
+			if( result != HAL_OK)
+			{
+				++fail_count;
+				goto restart;
+			}
+		}
 
 #if MEASURE_DAQ_TIME
 	    time_consumed = getTime_usec_privileged() - start_time;
