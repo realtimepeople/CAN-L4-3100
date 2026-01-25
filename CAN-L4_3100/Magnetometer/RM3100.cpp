@@ -102,7 +102,7 @@ void SPI1_select( bool enable)
 
 bool read_register_set( uint8_t _register, unsigned count, uint8_t * target)
 {
-	uint8_t TX_data[count];
+	uint8_t TX_data[count] = {0};
 	TX_data[0] = 0x80 | _register;
 	HAL_StatusTypeDef result;
 	SPI1_select( true);
@@ -114,6 +114,7 @@ bool read_register_set( uint8_t _register, unsigned count, uint8_t * target)
 
 ROM uint8_t INIT_DATA[] = { RM3100_CMM_REG, CMM, RM3100_MX2_REG, CCP1, CCP0, CCP1, CCP0, CCP1, CCP0, RM3100_TMRC_REG, TMRC};
 ROM uint8_t TRIGGER_TRIPLE_MEASUREMENT[] = { RM3100_POLL_REG, 0x70};
+ROM uint8_t TRIGGER_SINGLE_Z_MEASUREMENT[] = { RM3100_POLL_REG, 0x40};
 
 bool configure_RM3100(void)
 {
@@ -150,6 +151,11 @@ bool read_RM3100( hw_data * target)
     return read_register_set( RM3100_MX2_REG, sizeof(hw_data), (uint8_t *)target);
 }
 
+bool read_RM3100_single( uint8_t  * target)
+{
+    return read_register_set( RM3100_MZ2_REG, 4, (uint8_t *)target);
+}
+
 uint8_t handshake[2];
 mag_data measurement_result;
 unsigned fail_count;
@@ -167,6 +173,7 @@ restart:
 	bool result;
 	uint64_t packed_result;
 	uint64_t start_time;
+	uint8_t data_read[3][4];
 
 	volatile HAL_StatusTypeDef stat = HAL_CAN_Start(&hcan1);
 	CAN_TxHeaderTypeDef Header = { 0x070, 0, 0, 0, 6, DISABLE};
@@ -199,40 +206,44 @@ restart:
 
 		uint8_t status_register[2];
 
-		SPI1_select( true);
-		result = HAL_SPI_Transmit( &hspi1, TRIGGER_TRIPLE_MEASUREMENT, 2, 10);
-		SPI1_select( false);
-
-		if( result != HAL_OK)
-	    {
-	    	++fail_count;
-	    	goto restart;
-	    }
-
-		delay(8); // measurement takes 3 * 3ms
-		while( true)
+		for( unsigned sample = 0; sample < 3; ++sample)
 		{
-			result = read_register_set( RM3100_STATUS_REG, 2, status_register);
+			SPI1_select( true);
+			result = HAL_SPI_Transmit( &hspi1, TRIGGER_SINGLE_Z_MEASUREMENT, 2, 10);
+			SPI1_select( false);
+
+			if( result != HAL_OK)
+			{
+				++fail_count;
+				goto restart;
+			}
+
+			delay(3); // measurement takes 3ms
+
+			while( true)
+			{
+				result = read_register_set( RM3100_STATUS_REG, 2, status_register);
+				if( not  result)
+				{
+					++fail_count;
+					goto restart;
+				}
+				if( (status_register[1] & 0x80) != 0)
+					break;
+				delay(1); // wait one more tick and try again
+			}
+
+			result = read_RM3100_single( &(data_read[ sample][0]));
 			if( not  result)
 			{
 				++fail_count;
 				goto restart;
 			}
-			if( (status_register[1] & 0x80) != 0)
-				break;
-			delay(1); // wait one more tick and try again
 		}
 
-	    result = read_RM3100( &target);
-	    if( not  result)
-	    {
-	    	++fail_count;
-	    	goto restart;
-	    }
-
-	    measurement_result.magx = ((target.magx_2 << 24) | (target.magx_1 << 16) | (target.magx_0 << 8)) >> 8;
-		measurement_result.magy = ((target.magy_2 << 24) | (target.magy_1 << 16) | (target.magy_0 << 8)) >> 8;
-		measurement_result.magz = ((target.magz_2 << 24) | (target.magz_1 << 16) | (target.magz_0 << 8)) >> 8;
+	    measurement_result.magx = (( data_read[0][1] << 24) | ( data_read[0][2] << 16) | ( data_read[0][3] << 8)) >> 8;
+	    measurement_result.magy = (( data_read[1][1] << 24) | ( data_read[1][2] << 16) | ( data_read[1][3] << 8)) >> 8;
+	    measurement_result.magz = (( data_read[2][1] << 24) | ( data_read[2][2] << 16) | ( data_read[2][3] << 8)) >> 8;
 
 		// pack result into single 64 bit datum: 16 + 16 + 16 bits -> 6 bytes telegram length
 		packed_result =
