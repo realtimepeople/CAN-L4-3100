@@ -1,3 +1,4 @@
+
 **CAN-L4-3100 Magnetometer Module** 
 
 This firmware makes a Mateksys CAN-L4-3100 useful for a Larus system. 
@@ -11,3 +12,4 @@ It outputs its induction measurement at 100 Hz with 3 * 16bit resolution in a si
 The Larus sensor automatically calibrates the induction measurement and uses it for navigation as long as it receives the frames over the Larus CAN network. 
 
 The firmware installation to the magnetometer module can be done with either SWD or USART (STM32 boot protocol).
+
